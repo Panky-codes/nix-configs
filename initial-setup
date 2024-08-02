@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#TODO: parameterize the host name
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
+	--mode disko ./trinity/disk-config.nix
+
+sudo nixos-install --no-root-passwd --root /mnt --flake .#trinity
