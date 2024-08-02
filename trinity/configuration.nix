@@ -27,8 +27,8 @@
   users.users.panky = {
     isNormalUser = true;
     home = "/home/panky";
-#    shell = pkgs.zsh;
-#    ignoreShellProgramCheck = true;
+    shell = pkgs.zsh;
+    ignoreShellProgramCheck = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKwykgce0ra9fqDt2fsi5f/5TDOjTL7LS2wiBXU6Y4Yl dev@pankajraghav.com" ];
   };
