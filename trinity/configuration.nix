@@ -20,12 +20,15 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  virtualisation.docker.enable = true;
+
   users.users.panky = {
     isNormalUser = true;
     home = "/home/panky";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKwykgce0ra9fqDt2fsi5f/5TDOjTL7LS2wiBXU6Y4Yl dev@pankajraghav.com" ];
     hashedPassword = "";
+    packages = [pkgs.btop];
   };
 
   # List packages installed in system profile. To search, run:
@@ -35,6 +38,8 @@
     wget
     git
     zsh
+    docker
+    docker-compose
   ];
 
   # List services that you want to enable:
