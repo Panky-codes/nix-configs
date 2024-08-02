@@ -40,6 +40,7 @@
     zsh
     docker
     docker-compose
+    btrfs-progs
   ];
 
   # List services that you want to enable:
