@@ -12,6 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "console=ttyS0,115200" "earlyprintk=ttyS0,115200" "consoleblank=0"];
 
   fileSystems."/" =
     { device = "/dev/sda2";
