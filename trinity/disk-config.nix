@@ -35,6 +35,25 @@
           };
         };
       };
+
+      tank = {
+        device = "/dev/vda";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            tank = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "btrfs";
+                mountpoint = "/mnt/tank";
+		mountOptions = [ "default" "compress=zstd" "noatime" "autodefrag"];
+              };
+            };
+          };
+        };
+      };
     };
   };
 }
