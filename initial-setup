@@ -4,4 +4,16 @@
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
 	--mode disko ./trinity/disk-config.nix
 
+
+mkfs.btrfs -f /dev/vda
+mkfs.btrfs -f /dev/vdb
+
+mount /dev/vda /raid
+
+btrfs device add /dev/vdb /raid -f
+
+btrfs balance start -dconvert=raid1 -mconvert=raid1 /raid
+
+umount /raid
+
 nixos-install --no-root-passwd --root /mnt --flake .#trinity

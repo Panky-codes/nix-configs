@@ -19,11 +19,11 @@
       fsType = "ext4";
     };
 
-#  fileSystems."/mnt/tank" =
-#    { device = "/dev/vda";
-#      fsType = "btrfs";
-#      options = [ "default" "autodefrag" ];
-#    };
+  fileSystems."/mnt/tank" =
+    { device = "/dev/vda";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "noatime" ];
+    };
 
   fileSystems."/boot" =
     { device = "/dev/sda1";
