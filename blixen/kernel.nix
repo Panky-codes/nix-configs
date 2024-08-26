@@ -1,0 +1,1 @@
+kernel-configs/kernel-6-10-rc2-next-20240604.nix
