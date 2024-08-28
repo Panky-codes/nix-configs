@@ -3,7 +3,6 @@
     mosh
     btop
     wget
-    fzf
     stow
     git-publish
     gcc
