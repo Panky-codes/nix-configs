@@ -10,25 +10,38 @@
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
+  boot.initrd.supportedFilesystems = [ "zfs" ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "console=ttyS0,115200" "earlyprintk=ttyS0,115200" "consoleblank=0"];
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  boot.zfs.devNodes = "/dev/disk/by-partuuid"; # fixes some virtualmachine issues
+  networking.hostId = "9fd5ea5b"; # head -c4 /dev/urandom | od -A none -t x4
 
   fileSystems."/" =
     { device = "/dev/sda2";
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/tank" =
-    { device = "/dev/vda";
-      fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
-    };
-
   fileSystems."/boot" =
     { device = "/dev/sda1";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+
+  boot.zfs.extraPools = ["tank"];
+  fileSystems."/mnt/tank" =
+    {
+      device = "tank";
+      fsType = "zfs";
+    };
+  
+  fileSystems."/mnt/tank/docker" =
+    {
+      device = "tank/docker";
+      fsType = "zfs";
     };
 
   swapDevices =

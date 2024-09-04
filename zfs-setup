@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+sgdisk --zap-all /dev/vda
+sgdisk --zap-all /dev/vdb
+wipefs --all /dev/vda
+wipefs --all /dev/vdb
+
+
+zpool create -f -o ashift=12 -O mountpoint=none -m /mnt/tank tank mirror /dev/vda /dev/vdb
+zfs create -o mountpoint=legacy tank/docker
+
+mkdir /mnt/tank/docker
+mount -t zfs tank/docker /mnt/tank/docker
