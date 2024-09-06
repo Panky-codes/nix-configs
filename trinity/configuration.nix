@@ -38,6 +38,8 @@
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKwykgce0ra9fqDt2fsi5f/5TDOjTL7LS2wiBXU6Y4Yl dev@pankajraghav.com" ];
     hashedPassword = "";
     packages = [ pkgs.btop ];
+    #systemd user units will start at boot rather than starting at login and stopping at logout
+    linger = true;
   };
 
   # List packages installed in system profile. To search, run:
