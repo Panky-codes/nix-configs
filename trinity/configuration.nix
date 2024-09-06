@@ -64,8 +64,13 @@
     7190 #paperless
     7192 #firefly
     7193 #firefly importer
+    8384 # Web UI syncthing
+    22000 # TCP file transfers syncthing
   ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 
+      22000 # QUIC file transfers syncthing
+      21027 # Receive local discovery broadcasts syncthing
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
