@@ -36,6 +36,48 @@
           user = "panky";
         };
       };
+      "/mnt/tank/paperless/db" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
+      "/mnt/tank/paperless/redisdata" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
+      "/mnt/tank/paperless/data" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
+      "/mnt/tank/paperless/media" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
+      "/mnt/tank/paperless/export" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
+      "/mnt/tank/paperless/consume" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
       "/mnt/tank/syncthing" = {
         d = {
           group = "users";

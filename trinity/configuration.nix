@@ -59,6 +59,7 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
+    7190 #paperless
     7192 #firefly
     7193 #firefly importer
   ];
