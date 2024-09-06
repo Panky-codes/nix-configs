@@ -21,7 +21,10 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   users.users.panky = {
     isNormalUser = true;
@@ -50,7 +53,9 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 7192 #firefly
+                                          7193 #firefly importer
+                                        ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
