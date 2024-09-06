@@ -5,66 +5,75 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [
+      (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "console=ttyS0,115200" "earlyprintk=ttyS0,115200" "consoleblank=0"];
+  boot.kernelParams = [ "console=ttyS0,115200" "earlyprintk=ttyS0,115200" "consoleblank=0" ];
 
   fileSystems."/" =
-    { device = "/dev/sda2";
+    {
+      device = "/dev/sda2";
       fsType = "ext4";
     };
 
   fileSystems = {
-    "/mnt/tank" = { device = "/dev/vda";
+    "/mnt/tank" = {
+      device = "/dev/vda";
       fsType = "btrfs";
       options = [ "compress=zstd" "noatime" ];
     };
 
-    "/mnt/tank/firefly" = { device = "/dev/vda";
+    "/mnt/tank/firefly" = {
+      device = "/dev/vda";
       fsType = "btrfs";
       options = [ "subvol=firefly" "compress=zstd" "noatime" ];
     };
 
-    "/mnt/tank/nextcloud" = { device = "/dev/vda";
+    "/mnt/tank/nextcloud" = {
+      device = "/dev/vda";
       fsType = "btrfs";
       options = [ "subvol=nextcloud" "compress=zstd" "noatime" ];
     };
 
-    "/mnt/tank/paperless" = { device = "/dev/vda";
+    "/mnt/tank/paperless" = {
+      device = "/dev/vda";
       fsType = "btrfs";
       options = [ "subvol=paperless" "compress=zstd" "noatime" ];
     };
 
-    "/mnt/tank/syncthing" = { device = "/dev/vda";
+    "/mnt/tank/syncthing" = {
+      device = "/dev/vda";
       fsType = "btrfs";
       options = [ "subvol=syncthing" "compress=zstd" "noatime" ];
     };
 
-    "/mnt/tank/scrutiny" = { device = "/dev/vda";
+    "/mnt/tank/scrutiny" = {
+      device = "/dev/vda";
       fsType = "btrfs";
       options = [ "subvol=scrutiny" "compress=zstd" "noatime" ];
     };
 
-    "/mnt/tank/immich" = { device = "/dev/vda";
+    "/mnt/tank/immich" = {
+      device = "/dev/vda";
       fsType = "btrfs";
       options = [ "subvol=immich" "compress=zstd" "noatime" ];
     };
-};
+  };
 
   fileSystems."/boot" =
-    { device = "/dev/sda1";
+    {
+      device = "/dev/sda1";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/sda3"; }
-    ];
+    [{ device = "/dev/sda3"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

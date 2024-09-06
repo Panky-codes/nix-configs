@@ -1,5 +1,5 @@
 {
-systemd.tmpfiles.settings = {
+  systemd.tmpfiles.settings = {
     "tank" = {
       "/mnt/tank" = {
         d = {
@@ -58,6 +58,6 @@ systemd.tmpfiles.settings = {
         };
       };
     };
-};
+  };
 }
 

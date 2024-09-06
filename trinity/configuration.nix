@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./file.nix
     ];
@@ -29,10 +30,10 @@
   users.users.panky = {
     isNormalUser = true;
     home = "/home/panky";
-    extraGroups = [ "wheel" "docker"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKwykgce0ra9fqDt2fsi5f/5TDOjTL7LS2wiBXU6Y4Yl dev@pankajraghav.com" ];
     hashedPassword = "";
-    packages = [pkgs.btop];
+    packages = [ pkgs.btop ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -53,9 +54,10 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 7192 #firefly
-                                          7193 #firefly importer
-                                        ];
+  networking.firewall.allowedTCPPorts = [
+    7192 #firefly
+    7193 #firefly importer
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
