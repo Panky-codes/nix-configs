@@ -22,9 +22,13 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  virtualisation.docker.rootless = {
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
+    rootless =
+      {
+        enable = true;
+        setSocketVariable = true;
+      };
   };
 
   users.users.panky = {
