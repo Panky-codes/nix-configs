@@ -19,11 +19,42 @@
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/tank" =
-    { device = "/dev/vda";
+  fileSystems = {
+    "/mnt/tank" = { device = "/dev/vda";
       fsType = "btrfs";
       options = [ "compress=zstd" "noatime" ];
     };
+
+    "/mnt/tank/firefly" = { device = "/dev/vda";
+      fsType = "btrfs";
+      options = [ "subvol=firefly" "compress=zstd" "noatime" ];
+    };
+
+    "/mnt/tank/nextcloud" = { device = "/dev/vda";
+      fsType = "btrfs";
+      options = [ "subvol=nextcloud" "compress=zstd" "noatime" ];
+    };
+
+    "/mnt/tank/paperless" = { device = "/dev/vda";
+      fsType = "btrfs";
+      options = [ "subvol=paperless" "compress=zstd" "noatime" ];
+    };
+
+    "/mnt/tank/syncthing" = { device = "/dev/vda";
+      fsType = "btrfs";
+      options = [ "subvol=syncthing" "compress=zstd" "noatime" ];
+    };
+
+    "/mnt/tank/scrutiny" = { device = "/dev/vda";
+      fsType = "btrfs";
+      options = [ "subvol=scrutiny" "compress=zstd" "noatime" ];
+    };
+
+    "/mnt/tank/immich" = { device = "/dev/vda";
+      fsType = "btrfs";
+      options = [ "subvol=immich" "compress=zstd" "noatime" ];
+    };
+};
 
   fileSystems."/boot" =
     { device = "/dev/sda1";

@@ -33,7 +33,7 @@
 
       trinity = nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
-        modules = [./trinity/configuration.nix];
+        modules = [./trinity/configuration.nix ./trinity/file.nix ];
       };
 
       trinityiso = nixpkgs.lib.nixosSystem {

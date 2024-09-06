@@ -4,12 +4,22 @@
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
 	--mode disko ./trinity/disk-config.nix
 
+# Move these disko at some point:
+
 mkdir /raid
 
 mkfs.btrfs -f /dev/vda
 mkfs.btrfs -f /dev/vdb
 
 mount /dev/vda /raid
+
+btrfs subvolume create /raid/firefly
+btrfs subvolume create /raid/nextcloud
+btrfs subvolume create /raid/paperless
+btrfs subvolume create /raid/syncthing
+btrfs subvolume create /raid/scrutiny
+btrfs subvolume create /raid/immich
+
 
 btrfs device add /dev/vdb /raid -f
 
