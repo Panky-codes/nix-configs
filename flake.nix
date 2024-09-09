@@ -36,6 +36,12 @@
         modules = [./trinity/configuration.nix ./trinity/file.nix ];
       };
 
+      quentin = nixpkgs.lib.nixosSystem {
+	system = "x86_64-linux";
+        modules = [./quentin/configuration.nix ];
+      };
+
+
       trinityiso = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
