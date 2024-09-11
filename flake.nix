@@ -38,7 +38,18 @@
 
       quentin = nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
-        modules = [./quentin/configuration.nix ];
+        modules = [
+	  ./quentin/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.panky = import ./quentin/home.nix;
+          }
+
+	];
       };
 
 
