@@ -38,9 +38,9 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -75,6 +75,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  fonts.packages = with pkgs; [
+  nerdfonts
+];
   # Install firefox.
   programs.firefox.enable = true;
 

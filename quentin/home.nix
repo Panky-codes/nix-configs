@@ -16,6 +16,7 @@
     tldr
     enpass
     discord
+    obsidian
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
