@@ -14,6 +14,8 @@
     modprobed-db
     duf
     tldr
+    enpass
+    discord
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {

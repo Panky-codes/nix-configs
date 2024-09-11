@@ -14,8 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-dfdfd8f3-6eb0-4e37-974b-1c47dc2126fe".device = "/dev/disk/by-uuid/dfdfd8f3-6eb0-4e37-974b-1c47dc2126fe";
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "quentin"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -69,11 +68,11 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.panky = {
     isNormalUser = true;
+    home = "/home/panky";
+    shell = pkgs.zsh;
+    ignoreShellProgramCheck = true;
     description = "Pankaj ";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   # Install firefox.
@@ -89,7 +88,6 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     btop
-    discord
     git
   ];
 
