@@ -17,6 +17,9 @@
     enpass
     discord
     obsidian
+    restic
+    autorestic
+    thunderbird
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
