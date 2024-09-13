@@ -47,6 +47,8 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   # syncthing
   services = {
@@ -108,6 +110,7 @@
     btop
     git
     nfs-utils
+    citrix_workspace
   ];
 
   environment.etc.crypttab.text = ''
@@ -141,6 +144,22 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  services.btrbk = {
+  instances."vault" = {
+    onCalendar = "Mon..Fri, 15:30";
+    settings = {
+      snapshot_preserve = "14d";
+      snapshot_preserve_min = "2d";
+      target_preserve = "10d 4w *m";
+      stream_compress = "lz4";
+      volume."/btr_pool" = {
+        target = "/mnt/vault";
+        subvolume = "home";
+	snapshot_create = "always";
+      };
+    };
+  };
+};
 
   nix.gc = {
     automatic = true;

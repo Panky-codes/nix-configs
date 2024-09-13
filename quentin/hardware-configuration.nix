@@ -55,10 +55,24 @@
     options = [ "subvol=home" ];
   };
 
+  fileSystems = {
+  "/btr_pool" = {
+    device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
+    fsType = "btrfs";
+    options = [ "subvolid=5" ];
+  };
+};
+
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
     fsType = "btrfs";
     options = [ "subvol=nix" ];
+  };
+
+  fileSystems."/mnt/vault" = {
+    device = "/dev/disk/by-uuid/e04b44ad-1beb-4902-9b91-e5e6ed43e51c";
+    fsType = "btrfs";
+    options = [ "defaults" "noatime" "x-systemd.automount" "x-systemd.device-timeout=5" "noauto" ];
   };
 
   swapDevices = [ ];
