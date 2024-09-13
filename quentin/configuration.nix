@@ -159,8 +159,13 @@
   nix.gc = {
     automatic = true;
     persistent = true;
-    dates = "weekly";
+    dates = "Fri *-*-* 12:30:00";
     options = "--delete-older-than 7d";
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = [ "Fri *-*-* 13:30:00"];
   };
 
   # This value determines the NixOS release from which the default
