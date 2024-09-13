@@ -4,13 +4,14 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    agenix.url = "github:ryantm/agenix";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@ { nixpkgs, home-manager, ... }:
+  outputs = inputs@ { nixpkgs, home-manager, agenix, ... }:
   {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -39,8 +40,13 @@
       quentin = nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
         modules = [
+	   agenix.nixosModules.default
 	  ./quentin/configuration.nix
-
+	  ./quentin/age.nix
+	  ./quentin/wireguard.nix
+          {
+            environment.systemPackages = [ agenix.packages.x86_64-linux.default ];
+          }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

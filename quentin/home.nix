@@ -37,7 +37,7 @@
     enable = true;
     enableZshIntegration = true;
     agents = [ "gpg" "ssh" ];
-    keys = [ "github" ];
+    keys = [ "github" "blixen" ];
   };
 
   programs.zsh = {
@@ -160,6 +160,11 @@
       "github.com" = {
         hostname = "github.com";
         identityFile = "/home/panky/.ssh/github";
+      };
+      "blixen" = {
+        hostname = "10.20.40.150";
+	user = "panky";
+        identityFile = "/home/panky/.ssh/blixen";
       };
     };
   };

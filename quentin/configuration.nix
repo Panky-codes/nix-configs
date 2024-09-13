@@ -48,6 +48,15 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # syncthing
+  services = {
+    syncthing = {
+        enable = true;
+        user = "panky";
+        dataDir = "/home/panky/Documents/syncthing";    # Default folder for new synced folders
+        configDir = "/home/panky/Documents/syncthing/.config/syncthing";   # Folder for Syncthing's settings and keys
+    };
+  };
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -97,6 +106,9 @@
     nfs-utils
   ];
 
+  environment.etc.crypttab.text = ''
+    vault UUID=1342cc60-7514-4d70-8d1b-303b009cea34 /root/mykeyfile.key noauto
+  '';
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -108,11 +120,12 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # 2049 for NFS
-  networking.firewall.allowedTCPPorts = [ 2049 ];
+  networking.firewall.allowedTCPPorts = [ 2049 8384 22000 ];
+  networking.firewall.allowedUDPPorts = [ 22000 21027 51820 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
