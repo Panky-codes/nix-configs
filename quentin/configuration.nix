@@ -113,9 +113,6 @@
     citrix_workspace
   ];
 
-  environment.etc.crypttab.text = ''
-    vault UUID=1342cc60-7514-4d70-8d1b-303b009cea34 /root/mykeyfile.key noauto
-  '';
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
