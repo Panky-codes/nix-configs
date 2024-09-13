@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -51,10 +51,10 @@
   # syncthing
   services = {
     syncthing = {
-        enable = true;
-        user = "panky";
-        dataDir = "/home/panky/Documents/syncthing";    # Default folder for new synced folders
-        configDir = "/home/panky/Documents/syncthing/.config/syncthing";   # Folder for Syncthing's settings and keys
+      enable = true;
+      user = "panky";
+      dataDir = "/home/panky/Documents/syncthing"; # Default folder for new synced folders
+      configDir = "/home/panky/Documents/syncthing/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
   };
   # Enable sound with pipewire.
@@ -83,19 +83,23 @@
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
     description = "Pankaj ";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
-  fonts.packages = with pkgs; [
-  nerdfonts
-];
+  fonts.packages = with pkgs; [ nerdfonts ];
   # Install firefox.
   programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -124,11 +128,26 @@
 
   # Open ports in the firewall.
   # 2049 for NFS
-  networking.firewall.allowedTCPPorts = [ 2049 8384 22000 ];
-  networking.firewall.allowedUDPPorts = [ 22000 21027 51820 ];
+  networking.firewall.allowedTCPPorts = [
+    2049
+    8384
+    22000
+  ];
+  networking.firewall.allowedUDPPorts = [
+    22000
+    21027
+    51820
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  nix.gc = {
+    automatic = true;
+    persistent = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   home.packages = with pkgs; [
     mosh
     btop
@@ -36,8 +37,14 @@
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
-    agents = [ "gpg" "ssh" ];
-    keys = [ "github" "blixen" ];
+    agents = [
+      "gpg"
+      "ssh"
+    ];
+    keys = [
+      "github"
+      "blixen"
+    ];
   };
 
   programs.zsh = {
@@ -48,7 +55,10 @@
     autosuggestion.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "cp" ];
+      plugins = [
+        "git"
+        "cp"
+      ];
       theme = "robbyrussell";
     };
     initExtra = ''
@@ -70,7 +80,7 @@
 
   programs.fzf = {
     enable = true;
-#    enableZshIntegration = true;
+    #    enableZshIntegration = true;
   };
 
   programs.bat.enable = true;
@@ -98,10 +108,10 @@
     keyMode = "vi";
     #mouse = true;
     tmuxp.enable = true;
-    extraConfig = '' 
-          bind-key -T copy-mode-vi 'v' send -X begin-selection
-          bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
-          bind r source-file ~/.config/tmux/tmux.conf
+    extraConfig = ''
+      bind-key -T copy-mode-vi 'v' send -X begin-selection
+      bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+      bind r source-file ~/.config/tmux/tmux.conf
     '';
   };
 
@@ -111,7 +121,7 @@
     userName = "Pankaj Raghav";
     package = pkgs.gitAndTools.gitFull;
     aliases = {
-        s = "status";
+      s = "status";
     };
     delta = {
       enable = true;
@@ -163,7 +173,7 @@
       };
       "blixen" = {
         hostname = "10.20.40.150";
-	user = "panky";
+        user = "panky";
         identityFile = "/home/panky/.ssh/blixen";
       };
     };
@@ -200,7 +210,6 @@
       passwordCommand = "pass mailbox/mail";
     };
   };
-
 
   # The state version is required and should stay at the version you
   # originally installed.

@@ -1,3 +1,1 @@
-{
-   age.secrets.sohowgkey.file = ../secrets/sohowgpriv.age;
-}
+{ age.secrets.sohowgkey.file = ../secrets/sohowgpriv.age; }

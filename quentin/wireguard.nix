@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }:
 {
-networking.wireguard.interfaces = {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  networking.wireguard.interfaces = {
     # "wg0" is the network interface name. You can name the interface arbitrarily.
     wg0 = {
       ips = [ "10.30.60.18/32" ];
@@ -14,7 +19,10 @@ networking.wireguard.interfaces = {
         {
           publicKey = "Id2ph5GOA6lPBIB3YpQkEEIlp6/8nQDKPVcyxKSlQEA=";
 
-          allowedIPs = [ "10.20.40.0/24" "10.30.60.0/24"];
+          allowedIPs = [
+            "10.20.40.0/24"
+            "10.30.60.0/24"
+          ];
 
           endpoint = "194.62.216.251:51820";
 
@@ -23,5 +31,5 @@ networking.wireguard.interfaces = {
         }
       ];
     };
-};
+  };
 }
