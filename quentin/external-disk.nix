@@ -11,6 +11,12 @@
   fileSystems."/mnt/vault" = {
     device = "/dev/disk/by-uuid/e04b44ad-1beb-4902-9b91-e5e6ed43e51c";
     fsType = "btrfs";
-    options = [ "defaults" "noatime" "x-systemd.automount" "x-systemd.device-timeout=5" "noauto" ];
+    options = [
+      "defaults"
+      "noatime"
+      "x-systemd.automount"
+      "x-systemd.device-timeout=5"
+      "noauto"
+    ];
   };
 }

@@ -29,7 +29,11 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
     fsType = "btrfs";
-    options = [ "subvol=root" "noatime" "compress=zstd"];
+    options = [
+      "subvol=root"
+      "noatime"
+      "compress=zstd"
+    ];
   };
 
   boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/f5460f5f-cf9c-486e-87ec-f59003fc7c0f";
@@ -37,7 +41,11 @@
   fileSystems."/.swapvol" = {
     device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
     fsType = "btrfs";
-    options = [ "subvol=swap" "noatime" "compress=zstd"];
+    options = [
+      "subvol=swap"
+      "noatime"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/boot" = {
@@ -52,21 +60,33 @@
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
     fsType = "btrfs";
-    options = [ "subvol=home" "noatime" "compress=zstd"];
+    options = [
+      "subvol=home"
+      "noatime"
+      "compress=zstd"
+    ];
   };
 
   fileSystems = {
-  "/btr_pool" = {
-    device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
-    fsType = "btrfs";
-    options = [ "subvolid=5" "noatime" "compress=zstd"];
+    "/btr_pool" = {
+      device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
+      fsType = "btrfs";
+      options = [
+        "subvolid=5"
+        "noatime"
+        "compress=zstd"
+      ];
+    };
   };
-};
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
     fsType = "btrfs";
-    options = [ "subvol=nix" "noatime" "compress=zstd"];
+    options = [
+      "subvol=nix"
+      "noatime"
+      "compress=zstd"
+    ];
   };
 
   swapDevices = [ ];
