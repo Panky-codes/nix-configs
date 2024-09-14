@@ -5,7 +5,7 @@
 
   # The above crypttab creates a systemd cryptsetup vault service, which the below udev rule depends on
   services.udev.extraRules = ''
-    SUBSYSTEM=="block" ENV{ID_SERIAL_SHORT}=="S420NP0R400086Y", ENV{SYSTEMD_WANTS}="systemd-cryptsetup@vault.service"
+    SUBSYSTEM=="block" ENV{ID_WWN}=="nvme.144d-533432304e50305234303030383659-53616d73756e6720506f727461626c6520535344205835-00000001", ENV{SYSTEMD_WANTS}="systemd-cryptsetup@vault.service"
   '';
 
   fileSystems."/mnt/vault" = {
