@@ -21,6 +21,7 @@
     restic
     autorestic
     thunderbird
+    xclip
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
