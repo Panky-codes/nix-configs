@@ -2,25 +2,31 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./file.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./file.nix
+  ];
 
   boot.loader.systemd-boot.enable = true; # (for UEFI systems only)
-
 
   networking.hostName = "trinity"; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   virtualisation.docker = {
     enable = true;
@@ -29,8 +35,13 @@
   users.users.panky = {
     isNormalUser = true;
     home = "/home/panky";
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKwykgce0ra9fqDt2fsi5f/5TDOjTL7LS2wiBXU6Y4Yl dev@pankajraghav.com" ];
+    extraGroups = [
+      "wheel"
+      "docker"
+    ]; # Enable ‘sudo’ for the user.
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKwykgce0ra9fqDt2fsi5f/5TDOjTL7LS2wiBXU6Y4Yl dev@pankajraghav.com"
+    ];
     hashedPassword = "";
     packages = [ pkgs.btop ];
     #systemd user units will start at boot rather than starting at login and stopping at logout
@@ -56,15 +67,15 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
-    7190 #paperless
-    7192 #firefly
-    7193 #firefly importer
+    7190 # paperless
+    7192 # firefly
+    7193 # firefly importer
     8384 # Web UI syncthing
     22000 # TCP file transfers syncthing
   ];
-  networking.firewall.allowedUDPPorts = [ 
-      22000 # QUIC file transfers syncthing
-      21027 # Receive local discovery broadcasts syncthing
+  networking.firewall.allowedUDPPorts = [
+    22000 # QUIC file transfers syncthing
+    21027 # Receive local discovery broadcasts syncthing
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -95,4 +106,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   version = "6.10.0-rc2-04_06_24-next";
   modDirVersion = "6.10.0-rc2-next-20240604";
   configfile = ./config_6_10_rc3;
