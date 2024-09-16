@@ -146,10 +146,10 @@
       settings = {
         snapshot_preserve = "14d";
         snapshot_preserve_min = "2d";
-        target_preserve = "10d 4w *m";
+        target_preserve = "7d 4w *m";
         stream_compress = "lz4";
         volume."/btr_pool" = {
-          target = "/mnt/vault";
+          target = "/mnt/vault/quentin-home";
           subvolume = "home";
           snapshot_create = "always";
         };

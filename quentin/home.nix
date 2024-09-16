@@ -45,6 +45,9 @@
     keys = [
       "github"
       "blixen"
+      "trinity-nix"
+      "trinity"
+      "opnsense-ftp"
     ];
   };
 
@@ -70,6 +73,7 @@
       alias cat="bat"
       alias ls="lsd"
       alias df="duf"
+      alias shnow="shutdown -h now"
       export MCFLY_FUZZY=2
       if [[ -n $SSH_CONNECTION ]] ; then
          tmuxp load -d -y irc
@@ -176,6 +180,21 @@
         hostname = "10.20.40.150";
         user = "panky";
         identityFile = "/home/panky/.ssh/blixen";
+      };
+      "trinity" = {
+        hostname = "trinity.home.pankajraghav.com";
+        user = "panky";
+        identityFile = "/home/panky/.ssh/trinity";
+      };
+      "trinity-nix" = {
+        hostname = "192.168.8.61";
+        user = "panky";
+        identityFile = "/home/panky/.ssh/trinity-nix";
+      };
+      "sftp" = {
+        hostname = "192.168.8.1";
+        user = "ftp";
+        identityFile = "/home/panky/.ssh/opnsense-ftp";
       };
     };
   };

@@ -3,4 +3,6 @@ let
 in
 {
   "sohowgpriv.age".publicKeys = [ quentin ];
+  "windcphpriv.age".publicKeys = [ quentin ];
+  "windcphpreshared.age".publicKeys = [ quentin ];
 }

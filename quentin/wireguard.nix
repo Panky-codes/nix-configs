@@ -32,4 +32,25 @@
       ];
     };
   };
+
+  networking.wg-quick.interfaces = {
+    windscribe = {
+      address = [ "100.113.179.91/32" ];
+      dns = [ "10.255.255.3" ];
+      privateKeyFile = config.age.secrets.windcphpriv.path;
+      autostart = false;
+
+      peers = [
+        {
+          publicKey = "QgQ3dPssF5IGZczLNP1KKbkohpIu/GCYBdi6ecuoqwU=";
+          presharedKeyFile = config.age.secrets.windcphpreshared.path;
+          allowedIPs = [
+            "0.0.0.0/0"
+            "::/0"
+          ];
+          endpoint = "cph-153-wg.whiskergalaxy.com:65142";
+        }
+      ];
+    };
+  };
 }
