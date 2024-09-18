@@ -22,6 +22,7 @@
     autorestic
     thunderbird
     xclip
+    element-desktop
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
@@ -171,6 +172,7 @@
   programs.ssh = {
     enable = true;
     addKeysToAgent = "confirm";
+    forwardAgent = true;
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";

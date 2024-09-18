@@ -109,7 +109,8 @@
     git
     nfs-utils
     citrix_workspace
-    pkgs.gnomeExtensions.paperwm
+    python3
+    gnomeExtensions.paperwm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
