@@ -29,6 +29,20 @@
           user = "panky";
         };
       };
+      "/mnt/tank/nextcloud/db" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
+      "/mnt/tank/nextcloud/data" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
       "/mnt/tank/paperless" = {
         d = {
           group = "users";
@@ -36,7 +50,7 @@
           user = "panky";
         };
       };
-      "/mnt/tank/paperless/db" = {
+      "/mnt/tank/paperless/pgdata" = {
         d = {
           group = "users";
           mode = "0755";
@@ -92,7 +106,14 @@
           user = "panky";
         };
       };
-      "/mnt/tank/immich" = {
+      "/mnt/tank/scrutiny/config" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
+      "/mnt/tank/scrutiny/influxdb" = {
         d = {
           group = "users";
           mode = "0755";

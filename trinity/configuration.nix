@@ -71,6 +71,9 @@
     7192 # firefly
     7193 # firefly importer
     8384 # Web UI syncthing
+    8080 # Nextcloud
+    8090 # Scrutiny
+    8096 # Scrutiny influx
     22000 # TCP file transfers syncthing
   ];
   networking.firewall.allowedUDPPorts = [
