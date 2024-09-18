@@ -19,11 +19,19 @@
               };
             };
             root = {
-              end = "-1G";
+              size = "60%";
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
+              };
+            };
+            db = {
+              end = "-8G";
+              content = {
+                type = "filesystem";
+                format = "btrfs";
+                mountpoint = "/mnt/db";
               };
             };
             plainSwap = {
