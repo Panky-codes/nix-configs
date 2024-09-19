@@ -10,43 +10,50 @@
 }:
 
 {
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [
-    "ata_piix"
-    "uhci_hcd"
-    "virtio_pci"
-    "virtio_scsi"
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "mpt3sas"
+    "usbhid"
+    "usb_storage"
     "sd_mod"
-    "sr_mod"
-    "virtio_blk"
   ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [
-    "console=ttyS0,115200"
-    "earlyprintk=ttyS0,115200"
-    "consoleblank=0"
-  ];
 
   fileSystems."/" = {
-    device = "/dev/sda2";
+    device = "/dev/disk/by-uuid/9bb424a3-65b1-4ecd-b94c-6d39d99a722a";
     fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/0085-E37F";
+    fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
+  };
+
+  fileSystems."/mnt/db" = {
+    device = "/dev/disk/by-uuid/52ba3bde-7f3d-4077-9402-3df0ba613a66";
+    fsType = "btrfs";
+    options = [ "compress=zstd" ];
   };
 
   fileSystems = {
     "/mnt/tank" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
       fsType = "btrfs";
-      options = [
-        "compress=zstd"
-        "noatime"
-      ];
+      options = [ "compress=zstd" ];
     };
 
     "/mnt/tank/firefly" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
       fsType = "btrfs";
       options = [
         "subvol=firefly"
@@ -56,7 +63,7 @@
     };
 
     "/mnt/tank/nextcloud" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
       fsType = "btrfs";
       options = [
         "subvol=nextcloud"
@@ -66,7 +73,7 @@
     };
 
     "/mnt/tank/paperless" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
       fsType = "btrfs";
       options = [
         "subvol=paperless"
@@ -76,7 +83,7 @@
     };
 
     "/mnt/tank/syncthing" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
       fsType = "btrfs";
       options = [
         "subvol=syncthing"
@@ -86,7 +93,7 @@
     };
 
     "/mnt/tank/scrutiny" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
       fsType = "btrfs";
       options = [
         "subvol=scrutiny"
@@ -96,7 +103,7 @@
     };
 
     "/mnt/tank/immich" = {
-      device = "/dev/vda";
+      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
       fsType = "btrfs";
       options = [
         "subvol=immich"
@@ -106,23 +113,20 @@
     };
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/sda1";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
-  };
-
-  swapDevices = [ { device = "/dev/sda3"; } ];
+  swapDevices = [ { device = "/dev/disk/by-uuid/4d38e4ff-5743-4d83-b55b-0bba1ff62f73"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.ens18.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno2.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp10s0f0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp10s0f1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp9s0f0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp9s0f1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
