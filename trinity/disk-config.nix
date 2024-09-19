@@ -4,11 +4,15 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/sda";
+        device = "/dev/nvme0n1";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
+            boot = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
+            };
             ESP = {
               size = "500M";
               type = "EF00";
@@ -18,20 +22,20 @@
                 mountpoint = "/boot";
               };
             };
-            root = {
-              size = "60%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-              };
-            };
             db = {
-              end = "-8G";
+              size = "300G";
               content = {
                 type = "filesystem";
                 format = "btrfs";
                 mountpoint = "/mnt/db";
+              };
+            };
+            root = {
+              end = "-8G";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
               };
             };
             plainSwap = {
