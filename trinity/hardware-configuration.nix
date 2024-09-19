@@ -93,16 +93,6 @@
       ];
     };
 
-    "/mnt/tank/scrutiny" = {
-      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
-      fsType = "btrfs";
-      options = [
-        "subvol=scrutiny"
-        "compress=zstd"
-        "noatime"
-      ];
-    };
-
     "/mnt/tank/immich" = {
       device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
       fsType = "btrfs";

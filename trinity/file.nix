@@ -99,14 +99,7 @@
           user = "panky";
         };
       };
-      "/mnt/tank/scrutiny" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
-        };
-      };
-      "/mnt/tank/scrutiny/config" = {
+      "/mnt/db/scrutiny/config" = {
         d = {
           group = "users";
           mode = "0755";
