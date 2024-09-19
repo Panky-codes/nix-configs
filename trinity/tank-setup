@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+#TODO: parameterize the host name
+
+# Move these disko at some point:
+
+mkdir -p /mnt/mnt/tank
+
+mkfs.btrfs -f -m raid1 -d raid1 /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDHB7VKT /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDHBM8HB
+
+mount /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDHB7VKT /mnt/mnt/tank
+
+btrfs subvolume create /mnt/mnt/tank/firefly
+btrfs subvolume create /mnt/mnt/tank/nextcloud
+btrfs subvolume create /mnt/mnt/tank/paperless
+btrfs subvolume create /mnt/mnt/tank/syncthing
+btrfs subvolume create /mnt/mnt/tank/scrutiny
+btrfs subvolume create /mnt/mnt/tank/immich
+
+
+#btrfs device add /dev/vdb /raid -f
+#btrfs balance start -dconvert=raid1 -mconvert=raid1 /raid
+
+#nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
+#	--mode disko ./trinity/disk-config.nix
+#nixos-install --no-root-passwd --root /mnt --flake .#trinity
