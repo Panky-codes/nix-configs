@@ -8,7 +8,7 @@
           user = "panky";
         };
       };
-      "/mnt/tank/firefly/db" = {
+      "/mnt/db/firefly/db" = {
         d = {
           group = "users";
           mode = "0755";
@@ -29,7 +29,7 @@
           user = "panky";
         };
       };
-      "/mnt/tank/nextcloud/db" = {
+      "/mnt/db/nextcloud/db" = {
         d = {
           group = "users";
           mode = "0755";
@@ -50,14 +50,14 @@
           user = "panky";
         };
       };
-      "/mnt/tank/paperless/pgdata" = {
+      "/mnt/db/paperless/pgdata" = {
         d = {
           group = "users";
           mode = "0755";
           user = "panky";
         };
       };
-      "/mnt/tank/paperless/redisdata" = {
+      "/mnt/db/paperless/redisdata" = {
         d = {
           group = "users";
           mode = "0755";
@@ -113,7 +113,7 @@
           user = "panky";
         };
       };
-      "/mnt/tank/scrutiny/influxdb" = {
+      "/mnt/db/scrutiny/influxdb" = {
         d = {
           group = "users";
           mode = "0755";
