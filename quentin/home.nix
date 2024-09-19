@@ -23,6 +23,7 @@
     thunderbird
     xclip
     element-desktop
+    brave
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
@@ -185,11 +186,6 @@
       };
       "trinity" = {
         hostname = "trinity.home.pankajraghav.com";
-        user = "panky";
-        identityFile = "/home/panky/.ssh/trinity";
-      };
-      "trinity-nix" = {
-        hostname = "192.168.8.61";
         user = "panky";
         identityFile = "/home/panky/.ssh/trinity-nix";
       };

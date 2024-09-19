@@ -69,6 +69,7 @@
           ];
         };
 
+# nix build .#nixosConfigurations.trinityiso.config.system.build.isoImage
         trinityiso = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
