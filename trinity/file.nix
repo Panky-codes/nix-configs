@@ -1,97 +1,49 @@
 {
   systemd.tmpfiles.settings = {
     "tank" = {
-      "/mnt/tank" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
-        };
-      };
-      "/mnt/db/firefly/db" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
-        };
-      };
       "/mnt/tank/firefly/upload" = {
         d = {
-          group = "users";
+          group = "root";
           mode = "0755";
-          user = "panky";
-        };
-      };
-      "/mnt/tank/nextcloud" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
-        };
-      };
-      "/mnt/db/nextcloud/db" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
+          user = "root";
         };
       };
       "/mnt/tank/nextcloud/data" = {
         d = {
-          group = "users";
+          group = "root";
           mode = "0755";
-          user = "panky";
-        };
-      };
-      "/mnt/tank/paperless" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
-        };
-      };
-      "/mnt/db/paperless/pgdata" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
-        };
-      };
-      "/mnt/db/paperless/redisdata" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
+          user = "root";
         };
       };
       "/mnt/tank/paperless/data" = {
         d = {
-          group = "users";
+          group = "root";
           mode = "0755";
-          user = "panky";
+          user = "root";
         };
       };
       "/mnt/tank/paperless/media" = {
         d = {
-          group = "users";
+          group = "root";
           mode = "0755";
-          user = "panky";
+          user = "root";
         };
       };
       "/mnt/tank/paperless/export" = {
         d = {
-          group = "users";
+          group = "root";
           mode = "0755";
-          user = "panky";
+          user = "root";
         };
       };
       "/mnt/tank/paperless/consume" = {
         d = {
-          group = "users";
+          group = "root";
           mode = "0755";
-          user = "panky";
+          user = "root";
         };
       };
+# Notices some issues with permissions
       "/mnt/tank/syncthing" = {
         d = {
           group = "users";
@@ -99,18 +51,49 @@
           user = "panky";
         };
       };
+    };
+
+    "db" = {
+      "/mnt/db/firefly/db" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
+      "/mnt/db/nextcloud/db" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
+      "/mnt/db/paperless/pgdata" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
+      "/mnt/db/paperless/redisdata" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
       "/mnt/db/scrutiny/config" = {
         d = {
-          group = "users";
+          group = "root";
           mode = "0755";
-          user = "panky";
+          user = "root";
         };
       };
       "/mnt/db/scrutiny/influxdb" = {
         d = {
-          group = "users";
+          group = "root";
           mode = "0755";
-          user = "panky";
+          user = "root";
         };
       };
     };
