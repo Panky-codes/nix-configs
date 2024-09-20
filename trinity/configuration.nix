@@ -65,6 +65,9 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # autoscrub once a month
+  services.btrfs.autoScrub.enable = true;
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     7190 # paperless
