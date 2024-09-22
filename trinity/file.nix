@@ -96,6 +96,13 @@
           user = "root";
         };
       };
+      "/mnt/db/uptimekuma" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
     };
   };
 }

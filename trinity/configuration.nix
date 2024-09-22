@@ -58,12 +58,55 @@
     docker
     docker-compose
     btrfs-progs
+    autorestic
+    restic
+    tmux
   ];
 
   # List services that you want to enable:
+  systemd.timers."autorestic" = {
+  wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Unit = "autorestic.service";
+    };
+};
+
+systemd.services."autorestic" = {
+path = [pkgs.openssh];
+  script = ''
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/firefly/docker-compose.yaml stop
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/nextcloud/docker-compose.yaml stop
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/paperless-ngx/docker-compose.yaml stop
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/scrutiny/docker-compose.yaml stop
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/syncthing/docker-compose.yaml stop
+
+# Sometimes tc log is creating issues.
+# anyway it is not useful https://stackoverflow.com/questions/50158273/mysql-tc-log-file
+${pkgs.coreutils}/bin/rm -f /mnt/db/firefly/db/tc.log
+
+${pkgs.autorestic}/bin/autorestic -c /home/panky/.autorestic.yml --restic-bin "${pkgs.restic}/bin/restic" backup -a
+
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/firefly/docker-compose.yaml start
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/nextcloud/docker-compose.yaml start
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/paperless-ngx/docker-compose.yaml start
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/scrutiny/docker-compose.yaml start
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/syncthing/docker-compose.yaml start
+  '';
+  serviceConfig = {
+    Type = "oneshot";
+    User = "root";
+  };
+};
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  programs.ssh.extraConfig = ''
+  Host opnsftp
+  User ftp
+  HostName 192.168.8.1
+  IdentityFile /home/panky/.ssh/opnsense-ftp
+  '';
 
   # autoscrub once a month
   services.btrfs.autoScrub.enable = true;
