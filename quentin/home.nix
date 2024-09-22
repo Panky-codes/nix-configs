@@ -50,6 +50,7 @@
       "trinity-nix"
       "trinity"
       "opnsense-ftp"
+      "kdev_bigtwin"
     ];
   };
 
@@ -85,6 +86,12 @@
     history.ignoreAllDups = true;
   };
 
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
+  };
   programs.fzf = {
     enable = true;
     #    enableZshIntegration = true;
@@ -193,6 +200,18 @@
         hostname = "192.168.8.1";
         user = "ftp";
         identityFile = "/home/panky/.ssh/opnsense-ftp";
+      };
+      "bigtwin" = {
+        hostname = "149.97.161.244";
+        user = "panky";
+        identityFile = "/home/panky/.ssh/kdev_bigtwin";
+	port = 9004;
+      };
+      "bt04" = {
+        hostname = "bgt140507bm04.dtc.local";
+        user = "panky";
+        identityFile = "/home/panky/.ssh/kdev_bigtwin";
+	proxyJump = "bigtwin";
       };
     };
   };

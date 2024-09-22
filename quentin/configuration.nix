@@ -38,6 +38,9 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   services.fwupd.enable = true;
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  hardware.opengl.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -86,6 +89,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "libvirtd"
     ];
   };
 
