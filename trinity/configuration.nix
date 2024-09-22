@@ -73,7 +73,7 @@
 };
 
 systemd.services."autorestic" = {
-path = [pkgs.openssh];
+path = [pkgs.openssh pkgs.curl];
   script = ''
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/firefly/docker-compose.yaml stop
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/nextcloud/docker-compose.yaml stop
@@ -86,6 +86,8 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/s
 ${pkgs.coreutils}/bin/rm -f /mnt/db/firefly/db/tc.log
 
 ${pkgs.autorestic}/bin/autorestic -c /home/panky/.autorestic.yml --restic-bin "${pkgs.restic}/bin/restic" backup -a
+
+curl https://uptimekuma.home.pankajraghav.com/api/push/Yc6tma86cA?status=up&msg=OK&ping=
 
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/firefly/docker-compose.yaml start
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/nextcloud/docker-compose.yaml start
