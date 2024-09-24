@@ -137,6 +137,18 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/s
   system.copySystemConfiguration = false;
   security.sudo.wheelNeedsPassword = false;
 
+  nix.gc = {
+    automatic = true;
+    persistent = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
+  };
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
