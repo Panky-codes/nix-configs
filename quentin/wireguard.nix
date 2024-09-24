@@ -52,5 +52,23 @@
         }
       ];
     };
+
+    wghome = {
+      address = [ "10.50.50.2/32" ];
+      dns = [ "192.168.8.1" ];
+      privateKeyFile = config.age.secrets.wghomepriv.path;
+      autostart = false;
+
+      peers = [
+        {
+          publicKey = "gv1M0PUZGdAXjP22mIT0jDDHDjVVq3S8kRE26esjIzw=";
+          presharedKeyFile = config.age.secrets.wghomepreshared.path;
+          allowedIPs = [
+            "192.168.8.1/24"
+          ];
+          endpoint = "wghome.pankajraghav.com:50819";
+        }
+      ];
+    };
   };
 }

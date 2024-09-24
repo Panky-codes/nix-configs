@@ -24,6 +24,10 @@
     xclip
     element-desktop
     brave
+    todoist-electron
+    public-inbox
+    notmuch
+    neomutt
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
@@ -78,10 +82,7 @@
       alias df="duf"
       alias shnow="shutdown -h now"
       export MCFLY_FUZZY=2
-      if [[ -n $SSH_CONNECTION ]] ; then
-         tmuxp load -d -y irc
-         tmuxp load -d -y lbs
-      fi
+      alias nt="neomutt -F ~/.config/neomutt/neomuttrc.lei"
     '';
     history.ignoreAllDups = true;
   };

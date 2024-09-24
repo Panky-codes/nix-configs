@@ -6,5 +6,7 @@ in
   "sohowgpriv.age".publicKeys = [ quentin ];
   "windcphpriv.age".publicKeys = [ quentin ];
   "windcphpreshared.age".publicKeys = [ quentin ];
+  "wghomepreshared.age".publicKeys = [ quentin ];
+  "wghomepriv.age".publicKeys = [ quentin ];
   "autorestic.age".publicKeys = [ quentin trinity ];
 }
