@@ -28,6 +28,7 @@
     public-inbox
     notmuch
     neomutt
+    zoom-us
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
@@ -89,8 +90,14 @@
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
+    "org/gnome/desktop/datetime" = {
+      automatic-timezone = true;
+    };
+    "org/gnome/system/location" = {
+      enabled = true;
     };
   };
   programs.fzf = {
@@ -206,13 +213,18 @@
         hostname = "149.97.161.244";
         user = "panky";
         identityFile = "/home/panky/.ssh/kdev_bigtwin";
-	port = 9004;
+        port = 9004;
       };
       "bt04" = {
         hostname = "bgt140507bm04.dtc.local";
         user = "panky";
         identityFile = "/home/panky/.ssh/kdev_bigtwin";
-	proxyJump = "bigtwin";
+        proxyJump = "bigtwin";
+      };
+      "resticindia" = {
+        hostname = "resticindia.home.pankajraghav.com";
+        user = "panky";
+        identityFile = "/home/panky/.ssh/restserver";
       };
     };
   };

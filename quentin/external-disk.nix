@@ -1,3 +1,4 @@
+{ config, pkgs, ... }:
 {
   environment.etc.crypttab.text = ''
     vault UUID=1342cc60-7514-4d70-8d1b-303b009cea34 /root/mykeyfile.key noauto
@@ -19,4 +20,32 @@
       "noauto"
     ];
   };
+
+  systemd.services.backupvault = {
+    enable = true;
+    requires = [ "mnt-vault.mount" ];
+    after = [ "mnt-vault.mount" ];
+    wantedBy = [ "mnt-vault.mount" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.systemd}/bin/systemctl start btrbk-vault.service";
+    };
+  };
+
+  services.btrbk = {
+    instances."vault" = {
+      onCalendar = "Mon..Fri, 15:30";
+      settings = {
+        snapshot_preserve = "14d";
+        snapshot_preserve_min = "2d";
+        target_preserve = "7d 4w *m";
+        stream_compress = "lz4";
+        volume."/btr_pool" = {
+          target = "/mnt/vault/quentin-home";
+          subvolume = "home";
+          snapshot_create = "always";
+        };
+      };
+    };
+  };
+
 }

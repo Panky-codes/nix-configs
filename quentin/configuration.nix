@@ -25,7 +25,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Copenhagen";
+  time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -115,6 +115,8 @@
     citrix_workspace
     python3
     gnomeExtensions.paperwm
+    gnupg
+    pinentry-curses
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -129,6 +131,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.tailscale.enable = true;
 
   # Open ports in the firewall.
   # 2049 for NFS
@@ -145,23 +148,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-  services.btrbk = {
-    instances."vault" = {
-      onCalendar = "Mon..Fri, 15:30";
-      settings = {
-        snapshot_preserve = "14d";
-        snapshot_preserve_min = "2d";
-        target_preserve = "7d 4w *m";
-        stream_compress = "lz4";
-        volume."/btr_pool" = {
-          target = "/mnt/vault/quentin-home";
-          subvolume = "home";
-          snapshot_create = "always";
-        };
-      };
-    };
-  };
-
   nix.gc = {
     automatic = true;
     persistent = true;

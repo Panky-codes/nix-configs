@@ -5,34 +5,6 @@
   ...
 }:
 {
-  networking.wireguard.interfaces = {
-    # "wg0" is the network interface name. You can name the interface arbitrarily.
-    wg0 = {
-      ips = [ "10.30.60.18/32" ];
-      listenPort = 51820;
-
-      privateKeyFile = config.age.secrets.sohowgkey.path;
-
-      peers = [
-        # For a client configuration, one peer entry for the server will suffice.
-
-        {
-          publicKey = "Id2ph5GOA6lPBIB3YpQkEEIlp6/8nQDKPVcyxKSlQEA=";
-
-          allowedIPs = [
-            "10.20.40.0/24"
-            "10.30.60.0/24"
-          ];
-
-          endpoint = "194.62.216.251:51820";
-
-          # Send keepalives every 25 seconds. Important to keep NAT tables alive.
-          persistentKeepalive = 25;
-        }
-      ];
-    };
-  };
-
   networking.wg-quick.interfaces = {
     windscribe = {
       address = [ "100.113.179.91/32" ];
@@ -53,19 +25,54 @@
       ];
     };
 
+    windscribe_sing = {
+      address = [ "100.113.179.91/32" ];
+      dns = [ "10.255.255.3" ];
+      privateKeyFile = config.age.secrets.windsingpriv.path;
+      autostart = false;
+
+      peers = [
+        {
+          publicKey = "ePfazP+V1DkyyzK2VpSKS1JFiChU2TpO6jyYOmjnRAw=";
+          presharedKeyFile = config.age.secrets.windsingpreshared.path;
+          allowedIPs = [
+            "0.0.0.0/0"
+            "::/0"
+          ];
+          endpoint = "sin-170-wg.whiskergalaxy.com:65142";
+        }
+      ];
+    };
+
+    soho = {
+      address = [ "10.30.60.18/32" ];
+      privateKeyFile = config.age.secrets.sohowgkey.path;
+      autostart = true;
+
+      peers = [
+        {
+          publicKey = "Id2ph5GOA6lPBIB3YpQkEEIlp6/8nQDKPVcyxKSlQEA=";
+          allowedIPs = [
+            "10.20.40.0/24"
+            "10.30.60.0/24"
+          ];
+          endpoint = "194.62.216.251:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+
     wghome = {
       address = [ "10.50.50.2/32" ];
       dns = [ "192.168.8.1" ];
       privateKeyFile = config.age.secrets.wghomepriv.path;
-      autostart = false;
+      autostart = true;
 
       peers = [
         {
           publicKey = "gv1M0PUZGdAXjP22mIT0jDDHDjVVq3S8kRE26esjIzw=";
           presharedKeyFile = config.age.secrets.wghomepreshared.path;
-          allowedIPs = [
-            "192.168.8.1/24"
-          ];
+          allowedIPs = [ "192.168.8.1/24" ];
           endpoint = "wghome.pankajraghav.com:50819";
         }
       ];
