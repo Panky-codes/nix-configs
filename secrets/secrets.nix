@@ -10,5 +10,8 @@ in
   "windsingpreshared.age".publicKeys = [ quentin ];
   "wghomepreshared.age".publicKeys = [ quentin ];
   "wghomepriv.age".publicKeys = [ quentin ];
-  "autorestic.age".publicKeys = [ quentin trinity ];
+  "autorestic.age".publicKeys = [
+    quentin
+    trinity
+  ];
 }

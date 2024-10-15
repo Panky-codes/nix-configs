@@ -112,7 +112,6 @@
     btop
     git
     nfs-utils
-    citrix_workspace
     python3
     gnomeExtensions.paperwm
     gnupg
