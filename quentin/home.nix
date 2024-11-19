@@ -56,6 +56,10 @@
       "trinity"
       "opnsense-ftp"
       "kdev_bigtwin"
+      "hetz-arm"
+      "id_ed25519"
+      "hetz-amd-initrd"
+      "hetz-amd-panky"
     ];
   };
 
@@ -215,6 +219,27 @@
         identityFile = "/home/panky/.ssh/kdev_bigtwin";
         port = 9004;
       };
+      "hetz-arm" = {
+        hostname = "65.21.243.112";
+        user = "panky";
+        identityFile = "/home/panky/.ssh/hetz-arm";
+      };
+      "hetz-amd-initrd" = {
+        hostname = "135.181.231.96";
+        user = "root";
+        identityFile = "/home/panky/.ssh/hetz-amd-initrd";
+      };
+      "hetz-amd-panky" = {
+        hostname = "135.181.231.96";
+        user = "panky";
+        identityFile = "/home/panky/.ssh/hetz-amd-panky";
+	port = 718;
+      };
+      "nix-vm" = {
+        hostname = "192.168.122.94";
+        user = "root";
+        identityFile = "/home/panky/.ssh/id_ed25519";
+      };
       "bt04" = {
         hostname = "bgt140507bm04.dtc.local";
         user = "panky";
@@ -225,6 +250,9 @@
         hostname = "resticindia.home.pankajraghav.com";
         user = "panky";
         identityFile = "/home/panky/.ssh/restserver";
+      };
+      "*" = {
+	identitiesOnly = true;
       };
     };
   };
