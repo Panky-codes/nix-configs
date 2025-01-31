@@ -29,6 +29,7 @@
     notmuch
     neomutt
     zoom-us
+    libreoffice
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {

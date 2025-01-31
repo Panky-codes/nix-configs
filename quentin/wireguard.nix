@@ -66,7 +66,7 @@
       address = [ "10.50.50.2/32" ];
       dns = [ "192.168.8.1" ];
       privateKeyFile = config.age.secrets.wghomepriv.path;
-      autostart = true;
+      autostart = false;
 
       peers = [
         {
