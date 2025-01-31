@@ -85,9 +85,11 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/s
 # anyway it is not useful https://stackoverflow.com/questions/50158273/mysql-tc-log-file
 ${pkgs.coreutils}/bin/rm -f /mnt/db/firefly/db/tc.log
 
-${pkgs.autorestic}/bin/autorestic -c /home/panky/.autorestic.yml --restic-bin "${pkgs.restic}/bin/restic" backup -a
-
-curl https://uptimekuma.home.pankajraghav.com/api/push/Yc6tma86cA?status=up&msg=OK&ping=
+if ${pkgs.autorestic}/bin/autorestic -c /home/panky/.autorestic.yml --restic-bin "${pkgs.restic}/bin/restic" backup -a; then
+	curl https://uptimekuma.home.pankajraghav.com/api/push/Yc6tma86cA?status=up&msg=OK&ping=
+else
+	echo "Error doing restic backup. Going to bring back up the services!"
+fi
 
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/firefly/docker-compose.yaml start
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/nextcloud/docker-compose.yaml start

@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.git = {
     enable = true;
@@ -63,7 +63,44 @@
 
   home.file = {
     ".autorestic.yml".text = ''
-      set auto-load safe-path /
+backends:
+  rest_local:
+    type: sftp
+    path: opnsftp:/home/ftp/trinity-nix
+    env:
+      RESTIC_PASSWORD_FILE: /run/agenix/restic_dk
+
+  rest_india:
+    type: rest
+    path: http://resticindia.home.pankajraghav.com:8000/
+    env:
+      RESTIC_PASSWORD_FILE: /run/agenix/restic_india
+locations:
+  docker:
+    from:
+    - /mnt/tank
+    - /mnt/db
+    type: ""
+    to:
+    - rest_local
+    - rest_india
+    hooks:
+      dir: ""
+      prevalidate: []
+      before: []
+      after: []
+      success: []
+      failure: []
+    forget: prune
+    options:
+      forget:
+        keep-last:
+        - 2
+        keep-monthly:
+        - 12
+        keep-yearly:
+        - 2
+version: 2
     '';
   };
 
