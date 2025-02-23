@@ -95,8 +95,9 @@
   };
 
   fonts.packages = with pkgs; [ nerdfonts ];
-  # Install firefox.
+  # Install firefox and kde connect.
   programs.firefox.enable = true;
+  programs.kdeconnect.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
