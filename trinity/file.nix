@@ -50,14 +50,6 @@
           user = "root";
         };
       };
-# Notices some issues with permissions
-      "/mnt/tank/syncthing" = {
-        d = {
-          group = "users";
-          mode = "0755";
-          user = "panky";
-        };
-      };
     };
 
     "db" = {
@@ -108,6 +100,14 @@
           group = "root";
           mode = "0755";
           user = "root";
+        };
+      };
+# Noticed some issues with permissions
+      "/mnt/db/syncthing" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
         };
       };
       "/mnt/db/uptimekuma" = {
