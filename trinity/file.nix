@@ -8,6 +8,13 @@
           user = "root";
         };
       };
+      "/mnt/tank/immich" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
       "/mnt/tank/nextcloud/data" = {
         d = {
           group = "root";
@@ -90,6 +97,13 @@
         };
       };
       "/mnt/db/scrutiny/influxdb" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
+      "/mnt/db/immich" = {
         d = {
           group = "root";
           mode = "0755";

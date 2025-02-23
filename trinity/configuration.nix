@@ -80,6 +80,7 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/n
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/paperless-ngx/docker-compose.yaml stop
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/scrutiny/docker-compose.yaml stop
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/syncthing/docker-compose.yaml stop
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/immich/docker-compose.yaml stop
 
 # Sometimes tc log is creating issues.
 # anyway it is not useful https://stackoverflow.com/questions/50158273/mysql-tc-log-file
@@ -96,6 +97,7 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/n
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/paperless-ngx/docker-compose.yaml start
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/scrutiny/docker-compose.yaml start
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/syncthing/docker-compose.yaml start
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/immich/docker-compose.yaml start
   '';
   serviceConfig = {
     Type = "oneshot";
@@ -117,6 +119,7 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/s
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
+    2283 # immich
     7190 # paperless
     7192 # firefly
     7193 # firefly importer
