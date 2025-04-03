@@ -41,7 +41,7 @@
   services.fwupd.enable = true;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
