@@ -30,6 +30,8 @@
     neomutt
     zoom-us
     libreoffice
+    mutagen
+    just
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
