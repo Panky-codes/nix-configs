@@ -39,6 +39,7 @@
       "EE88D088FD426B7C81ECDFE8A15AD9F9172E96F5"
       "github"
       "id_rsa"
+      "hetzie"
     ];
   };
   programs.zsh = {
@@ -186,6 +187,12 @@
         user = "root";
         identityFile = "/home/panky/.ssh/id_rsa";
         port = 2222;
+      };
+      "hetz-amd-panky" = {
+        hostname = "135.181.231.96";
+        user = "panky";
+        identityFile = "/home/panky/.ssh/hetzie";
+	port = 718;
       };
     };
   };
