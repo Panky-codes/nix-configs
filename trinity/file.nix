@@ -102,6 +102,20 @@
           user = "root";
         };
       };
+      "/mnt/db/hoarder/data" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
+      "/mnt/db/hoarder/meilidata" = {
+        d = {
+          group = "root";
+          mode = "0755";
+          user = "root";
+        };
+      };
 # Noticed some issues with permissions
       "/mnt/db/syncthing" = {
         d = {

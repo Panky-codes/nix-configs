@@ -117,9 +117,14 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/i
   # autoscrub once a month
   services.btrfs.autoScrub.enable = true;
 
+  # powertop
+  powerManagement.powertop.enable = true;
+
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     2283 # immich
+    3000 # hoarder
     7190 # paperless
     7192 # firefly
     7193 # firefly importer
