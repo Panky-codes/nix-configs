@@ -16,6 +16,8 @@
     duf
     tldr
     irssi
+    just
+    mutagen
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {

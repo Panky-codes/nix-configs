@@ -88,7 +88,7 @@
     nixpkgs-fmt
     gnupg
     pinentry-curses
-    qemu
+    #qemu
     qemu-utils
     #  ccache
   ];
