@@ -80,7 +80,7 @@
       ];
       theme = "robbyrussell";
     };
-    initExtra = ''
+    initContent = ''
       RPROMPT="%F{blue}%B%~%b%f:[%F{yellow}%?%f]:[%F{green}%M%f]:%F{red}%B%*%b%f"
       alias b1="cd .."
       alias b2="cd ../.."

@@ -62,7 +62,7 @@
     };
   };
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -94,7 +94,7 @@
     ];
   };
 
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts.packages = [ pkgs.nerd-fonts.hack ];
   # Install firefox and kde connect.
   programs.firefox.enable = true;
   programs.kdeconnect.enable = true;
