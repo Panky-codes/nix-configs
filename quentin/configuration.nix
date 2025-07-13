@@ -52,6 +52,8 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  powerManagement.powertop.enable = true;
+
   # syncthing
   services = {
     syncthing = {

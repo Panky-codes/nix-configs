@@ -21,14 +21,15 @@
     "sd_mod"
     "aesni_intel"
     "cryptd"
+    "thunderbolt"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-#  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
+    device = "/dev/disk/by-uuid/6d4b7dc2-a368-4dac-b6d8-1f62ffb0bf3b";
     fsType = "btrfs";
     options = [
       "subvol=root"
@@ -37,10 +38,10 @@
     ];
   };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/f5460f5f-cf9c-486e-87ec-f59003fc7c0f";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/d1ed6d5d-966c-4e97-9438-5a4e28df6e96";
 
   fileSystems."/.swapvol" = {
-    device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
+    device = "/dev/disk/by-uuid/6d4b7dc2-a368-4dac-b6d8-1f62ffb0bf3b";
     fsType = "btrfs";
     options = [
       "subvol=swap"
@@ -50,7 +51,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E7AA-F08E";
+    device = "/dev/disk/by-uuid/01DF-1B9D";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -59,7 +60,7 @@
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
+    device = "/dev/disk/by-uuid/6d4b7dc2-a368-4dac-b6d8-1f62ffb0bf3b";
     fsType = "btrfs";
     options = [
       "subvol=home"
@@ -70,7 +71,7 @@
 
   fileSystems = {
     "/btr_pool" = {
-      device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
+      device = "/dev/disk/by-uuid/6d4b7dc2-a368-4dac-b6d8-1f62ffb0bf3b";
       fsType = "btrfs";
       options = [
         "subvolid=5"
@@ -81,7 +82,7 @@
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/4bd58141-b942-4181-9485-5ebbbc534d9e";
+    device = "/dev/disk/by-uuid/6d4b7dc2-a368-4dac-b6d8-1f62ffb0bf3b";
     fsType = "btrfs";
     options = [
       "subvol=nix"
@@ -91,6 +92,8 @@
   };
 
   swapDevices = [ ];
+
+  services.fprintd.enable = true;
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

@@ -1,0 +1,5 @@
+1. disko
+2. sudo nixos-install --flake .#quentin
+3. Login as root user
+4. Add passwd to panky user
+

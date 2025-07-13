@@ -62,7 +62,7 @@
           system = "x86_64-linux";
           modules = [
             agenix.nixosModules.default
-            nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
+            nixos-hardware.nixosModules.framework-intel-core-ultra-series1
             ./quentin/configuration.nix
             ./quentin/age.nix
             ./quentin/wireguard.nix
