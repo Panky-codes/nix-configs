@@ -22,8 +22,9 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+#  boot.crashDump.enable = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/494d5198-efcf-4dd6-ac66-a0ba42e35cdd";
@@ -117,5 +118,5 @@
   # networking.interfaces.enp9s0f1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

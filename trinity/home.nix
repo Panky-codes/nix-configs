@@ -83,7 +83,6 @@ locations:
     type: ""
     to:
     - rest_local
-    - rest_india
     hooks:
       dir: ""
       prevalidate: []

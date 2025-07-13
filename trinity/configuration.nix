@@ -118,7 +118,7 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/i
   services.btrfs.autoScrub.enable = true;
 
   # powertop
-  powerManagement.powertop.enable = true;
+  #powerManagement.powertop.enable = true;
 
 
   # Open ports in the firewall.
