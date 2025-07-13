@@ -107,6 +107,7 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/i
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.fwupd.enable = true;
   programs.ssh.extraConfig = ''
   Host opnsftp
   User ftp
