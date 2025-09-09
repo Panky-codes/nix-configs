@@ -32,6 +32,7 @@
     libreoffice
     mutagen
     just
+    pinentry
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
@@ -205,6 +206,12 @@
         hostname = "10.20.40.150";
         user = "panky";
         identityFile = "/home/panky/.ssh/blixen";
+      };
+      "vmctl" = {
+        hostname = "localhost";
+        user = "root";
+        identityFile = "/home/panky/.ssh/vmctl";
+        port = 2222;
       };
       "trinity" = {
         hostname = "trinity.home.pankajraghav.com";
