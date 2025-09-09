@@ -72,10 +72,14 @@
     home = "/home/panky";
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDqwLQFnJgV1wHDOZC6m280Rdi7R+E48EH/7E48JC5kp p.raghav@samsung.com"
     ];
+  };
+
+  virtualisation.docker = {
+    enable = true;
   };
 
   # List packages installed in system profile. To search, run:
@@ -90,6 +94,7 @@
     pinentry-curses
     #qemu
     qemu-utils
+    virtiofsd
     #  ccache
   ];
   environment.pathsToLink = [ "/share/zsh" ];
