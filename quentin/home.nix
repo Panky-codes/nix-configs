@@ -64,6 +64,7 @@
       "id_ed25519"
       "hetz-amd-initrd"
       "hetz-amd-panky"
+      "vmctl"
     ];
   };
 
