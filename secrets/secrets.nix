@@ -3,7 +3,6 @@ let
   trinity = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILoiOewu6EAitM+VjAwZcLvM2jhLn+93dEuTe0oJcSEC root@trinity";
 in
 {
-  "sohowgpriv.age".publicKeys = [ quentin ];
   "windcphpriv.age".publicKeys = [ quentin ];
   "windcphpreshared.age".publicKeys = [ quentin ];
   "windsingpriv.age".publicKeys = [ quentin ];

@@ -44,24 +44,6 @@
       ];
     };
 
-    soho = {
-      address = [ "10.30.60.18/32" ];
-      privateKeyFile = config.age.secrets.sohowgkey.path;
-      autostart = true;
-
-      peers = [
-        {
-          publicKey = "Id2ph5GOA6lPBIB3YpQkEEIlp6/8nQDKPVcyxKSlQEA=";
-          allowedIPs = [
-            "10.20.40.0/24"
-            "10.30.60.0/24"
-          ];
-          endpoint = "194.62.216.251:51820";
-          persistentKeepalive = 25;
-        }
-      ];
-    };
-
     wghome = {
       address = [ "10.50.50.2/32" ];
       dns = [ "192.168.8.1" ];
