@@ -79,7 +79,6 @@ locations:
   docker:
     from:
     - /mnt/tank
-    - /mnt/db
     type: ""
     to:
     - rest_local

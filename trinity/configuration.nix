@@ -84,7 +84,7 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/i
 
 # Sometimes tc log is creating issues.
 # anyway it is not useful https://stackoverflow.com/questions/50158273/mysql-tc-log-file
-${pkgs.coreutils}/bin/rm -f /mnt/db/firefly/db/tc.log
+${pkgs.coreutils}/bin/rm -f /mnt/tank/db/firefly/db/tc.log
 
 if ${pkgs.autorestic}/bin/autorestic -c /home/panky/.autorestic.yml --restic-bin "${pkgs.restic}/bin/restic" backup -a; then
 	curl https://uptimekuma.home.pankajraghav.com/api/push/Yc6tma86cA?status=up&msg=OK&ping=

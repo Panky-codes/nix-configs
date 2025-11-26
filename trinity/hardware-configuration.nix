@@ -27,12 +27,12 @@
 #  boot.crashDump.enable = true;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/494d5198-efcf-4dd6-ac66-a0ba42e35cdd";
+    { device = "/dev/disk/by-uuid/135f17e9-c8d4-47fc-8883-db8d049e90f7";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A1BD-F833";
+    { device = "/dev/disk/by-uuid/B98C-DAC3";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -41,12 +41,6 @@
 #    [ { device = "/dev/disk/by-uuid/7ec8a374-e5ef-4886-8341-e04b47770299"; }
 #    ];
 #
-  "/mnt/tank/db" =
-    { device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
-      fsType = "btrfs";
-      options = [ "compress=zstd" ];
-    };
-
   fileSystems = {
     "/mnt/tank" = {
       device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";

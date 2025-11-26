@@ -4,7 +4,7 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/nvme0n1";
+        device = "/dev/sdb";
         type = "disk";
         content = {
           type = "gpt";
@@ -18,26 +18,12 @@
                 mountpoint = "/boot";
               };
             };
-            db = {
-              size = "300G";
-              content = {
-                type = "filesystem";
-                format = "btrfs";
-                mountpoint = "/mnt/db";
-              };
-            };
             root = {
               end = "-8G";
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
-              };
-            };
-            plainSwap = {
-              size = "100%";
-              content = {
-                type = "swap";
               };
             };
           };
