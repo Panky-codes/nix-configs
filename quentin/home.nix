@@ -33,6 +33,9 @@
     mutagen
     just
     pinentry
+    gemini-cli
+    spotify
+    imagemagick
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {

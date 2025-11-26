@@ -43,6 +43,10 @@
   programs.virt-manager.enable = true;
   hardware.graphics.enable = true;
 
+  virtualisation.docker = {
+    enable = true;
+  };
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -93,6 +97,7 @@
       "networkmanager"
       "wheel"
       "libvirtd"
+      "docker"
     ];
   };
 
