@@ -37,25 +37,25 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/db" =
-    { device = "/dev/disk/by-uuid/7ee583b5-7a03-4bd5-9e3a-b48013b5ad6c";
+#  swapDevices =
+#    [ { device = "/dev/disk/by-uuid/7ec8a374-e5ef-4886-8341-e04b47770299"; }
+#    ];
+#
+  "/mnt/tank/db" =
+    { device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
       fsType = "btrfs";
       options = [ "compress=zstd" ];
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/7ec8a374-e5ef-4886-8341-e04b47770299"; }
-    ];
-
   fileSystems = {
     "/mnt/tank" = {
-      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
+      device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
       fsType = "btrfs";
       options = [ "compress=zstd" ];
     };
 
     "/mnt/tank/firefly" = {
-      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
+      device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
       fsType = "btrfs";
       options = [
         "subvol=firefly"
@@ -64,8 +64,14 @@
       ];
     };
 
+   "/mnt/tank/db" =
+     { device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
+       fsType = "btrfs";
+       options = [ "subvol=db" "compress=zstd" ];
+     };
+
     "/mnt/tank/nextcloud" = {
-      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
+      device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
       fsType = "btrfs";
       options = [
         "subvol=nextcloud"
@@ -75,7 +81,7 @@
     };
 
     "/mnt/tank/paperless" = {
-      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
+      device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
       fsType = "btrfs";
       options = [
         "subvol=paperless"
@@ -85,7 +91,7 @@
     };
 
     "/mnt/tank/syncthing" = {
-      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
+      device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
       fsType = "btrfs";
       options = [
         "subvol=syncthing"
@@ -95,7 +101,7 @@
     };
 
     "/mnt/tank/immich" = {
-      device = "/dev/disk/by-uuid/3cfa32f4-f6c4-480c-ad0e-478cc555b391";
+      device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";
       fsType = "btrfs";
       options = [
         "subvol=immich"

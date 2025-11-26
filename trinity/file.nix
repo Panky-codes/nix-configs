@@ -53,63 +53,63 @@
     };
 
     "db" = {
-      "/mnt/db/firefly/db" = {
+      "/mnt/tank/db/firefly/db" = {
         d = {
           group = "root";
           mode = "0755";
           user = "root";
         };
       };
-      "/mnt/db/nextcloud/db" = {
+      "/mnt/tank/db/nextcloud/db" = {
         d = {
           group = "root";
           mode = "0755";
           user = "root";
         };
       };
-      "/mnt/db/paperless/pgdata" = {
+      "/mnt/tank/db/paperless/pgdata" = {
         d = {
           group = "root";
           mode = "0755";
           user = "root";
         };
       };
-      "/mnt/db/paperless/redisdata" = {
+      "/mnt/tank/db/paperless/redisdata" = {
         d = {
           group = "root";
           mode = "0755";
           user = "root";
         };
       };
-      "/mnt/db/scrutiny/config" = {
+      "/mnt/tank/db/scrutiny/config" = {
         d = {
           group = "root";
           mode = "0755";
           user = "root";
         };
       };
-      "/mnt/db/scrutiny/influxdb" = {
+      "/mnt/tank/db/scrutiny/influxdb" = {
         d = {
           group = "root";
           mode = "0755";
           user = "root";
         };
       };
-      "/mnt/db/immich" = {
+      "/mnt/tank/db/immich" = {
         d = {
           group = "root";
           mode = "0755";
           user = "root";
         };
       };
-      "/mnt/db/hoarder/data" = {
+      "/mnt/tank/db/hoarder/data" = {
         d = {
           group = "root";
           mode = "0755";
           user = "root";
         };
       };
-      "/mnt/db/hoarder/meilidata" = {
+      "/mnt/tank/db/hoarder/meilidata" = {
         d = {
           group = "root";
           mode = "0755";
@@ -117,14 +117,14 @@
         };
       };
 # Noticed some issues with permissions
-      "/mnt/db/syncthing" = {
+      "/mnt/tank/db/syncthing" = {
         d = {
           group = "users";
           mode = "0755";
           user = "panky";
         };
       };
-      "/mnt/db/uptimekuma" = {
+      "/mnt/tank/db/uptimekuma" = {
         d = {
           group = "root";
           mode = "0755";

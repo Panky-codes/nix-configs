@@ -6,9 +6,12 @@
 
 mkdir -p /mnt/mnt/tank
 
-mkfs.btrfs -f -m raid1 -d raid1 /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDHB7VKT /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDHBM8HB
+# Old HDD
+#mkfs.btrfs -f -m raid1 -d raid1 /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDHB7VKT /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDHBM8HB
 
-mount /dev/disk/by-id/ata-ST4000VN008-2DR166_ZDHB7VKT /mnt/mnt/tank
+mkfs.btrfs -f -L tank -m raid1 -d raid1 /dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b42a14fbd /dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b42a1aa3b
+
+mount /dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b42a1aa3b /mnt/mnt/tank
 
 btrfs subvolume create /mnt/mnt/tank/firefly
 btrfs subvolume create /mnt/mnt/tank/nextcloud
