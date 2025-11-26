@@ -1,6 +1,7 @@
 let
   quentin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/6Oh5VLHRAzoeiC53hQzGJ3wkSR4qGR7erqlU7fpWp root@quentin";
   trinity = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILoiOewu6EAitM+VjAwZcLvM2jhLn+93dEuTe0oJcSEC root@trinity";
+  trinity-minis = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBv3v91NSdXVvwlPyoG7/09zjKxo67xq+2ORy1ocP/mq root@trinity";
 in
 {
   "windcphpriv.age".publicKeys = [ quentin ];
@@ -9,6 +10,6 @@ in
   "windsingpreshared.age".publicKeys = [ quentin ];
   "wghomepreshared.age".publicKeys = [ quentin ];
   "wghomepriv.age".publicKeys = [ quentin ];
-  "restic_india.age".publicKeys = [ quentin trinity ];
-  "restic_dk.age".publicKeys = [ quentin trinity ];
+  "restic_india.age".publicKeys = [ quentin trinity trinity-minis];
+  "restic_dk.age".publicKeys = [ quentin trinity trinity-minis];
 }
