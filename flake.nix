@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     agenix.url = "github:ryantm/agenix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
@@ -18,6 +19,7 @@
       home-manager,
       agenix,
       nixos-hardware,
+      nixos-wsl,
       ...
     }:
     {
@@ -76,6 +78,14 @@
               home-manager.users.panky = import ./quentin/home.nix;
             }
 
+          ];
+        };
+
+        weesie = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-wsl.nixosModules.default
+            ./weesie/configuration.nix
           ];
         };
 
