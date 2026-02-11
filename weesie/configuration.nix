@@ -11,8 +11,8 @@
   users.users.panky = {
     isNormalUser = true;
     home = "/home/panky";
-    #shell = pkgs.zsh;
-    #ignoreShellProgramCheck = true;
+    shell = pkgs.zsh;
+    ignoreShellProgramCheck = true;
     description = "Pankaj ";
     extraGroups = [
       "networkmanager"
@@ -34,6 +34,8 @@
   ];
 
     networking.hostName = "weesie"; # Define your hostname.
+    # Need this for wsl
+    programs.dconf.enable = true;
 
 
 #  security.pki.certificateFiles = [

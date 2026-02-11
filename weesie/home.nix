@@ -15,28 +15,15 @@
     modprobed-db
     duf
     tldr
-    enpass
-    discord
-    obsidian
     restic
     autorestic
-    thunderbird
     xclip
-    element-desktop
-    brave
-    todoist-electron
     public-inbox
     notmuch
     neomutt
-    zoom-us
-    libreoffice
-    mutagen
     just
     pinentry-curses
     gemini-cli
-    spotify
-    imagemagick
-    webex
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
@@ -59,13 +46,6 @@
     ];
     keys = [
       "github"
-      "blixen"
-      "trinity-nix"
-      "trinity"
-      "opnsense-ftp"
-      "hetz-arm"
-      "id_ed25519"
-      "hetz-amd-initrd"
       "hetz-amd-panky"
       "vmctl"
     ];
@@ -206,58 +186,17 @@
         hostname = "github.com";
         identityFile = "/home/panky/.ssh/github";
       };
-      "blixen" = {
-        hostname = "10.20.40.150";
-        user = "panky";
-        identityFile = "/home/panky/.ssh/blixen";
-      };
       "vmctl" = {
         hostname = "localhost";
         user = "root";
         identityFile = "/home/panky/.ssh/vmctl";
         port = 2222;
       };
-      "trinity" = {
-        hostname = "trinity.home.pankajraghav.com";
-        user = "panky";
-        identityFile = "/home/panky/.ssh/trinity-nix";
-      };
-      "sftp" = {
-        hostname = "192.168.8.1";
-        user = "ftp";
-        identityFile = "/home/panky/.ssh/opnsense-ftp";
-      };
-      "hetz-arm" = {
-        hostname = "65.21.243.112";
-        user = "panky";
-        identityFile = "/home/panky/.ssh/hetz-arm";
-      };
-      "hetz-amd-initrd" = {
-        hostname = "135.181.231.96";
-        user = "root";
-        identityFile = "/home/panky/.ssh/hetz-amd-initrd";
-      };
       "hetz-amd-panky" = {
         hostname = "135.181.231.96";
         user = "panky";
         identityFile = "/home/panky/.ssh/hetz-amd-panky";
 	port = 718;
-      };
-      "nix-vm" = {
-        hostname = "192.168.122.94";
-        user = "root";
-        identityFile = "/home/panky/.ssh/id_ed25519";
-      };
-      "bt04" = {
-        hostname = "bgt140507bm04.dtc.local";
-        user = "panky";
-        identityFile = "/home/panky/.ssh/kdev_bigtwin";
-        proxyJump = "bigtwin";
-      };
-      "resticindia" = {
-        hostname = "resticindia.home.pankajraghav.com";
-        user = "panky";
-        identityFile = "/home/panky/.ssh/restserver";
       };
       "*" = {
 	identitiesOnly = true;
