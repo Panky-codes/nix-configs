@@ -25,7 +25,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  #time.timeZone = "Asia/Kolkata";
+#time.timeZone = "Asia/Kolkata";
   time.timeZone = "Europe/Amsterdam";
 
   # Select internationalisation properties.
@@ -125,6 +125,7 @@
     gnomeExtensions.paperwm
     gnupg
     pinentry-curses
+    xfsprogs
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -32,10 +32,11 @@
     libreoffice
     mutagen
     just
-    pinentry
+    pinentry-curses
     gemini-cli
     spotify
     imagemagick
+    webex
   ];
   programs.gpg.enable = true;
   services.gpg-agent = {
@@ -45,7 +46,7 @@
     defaultCacheTtl = 7200;
     maxCacheTtl = 28800;
     extraConfig = ''
-      pinentry-program ${pkgs.pinentry.curses}/bin/pinentry-curses
+      pinentry-program ${pkgs.pinentry-curses}/bin/pinentry-curses
     '';
   };
 
@@ -62,7 +63,6 @@
       "trinity-nix"
       "trinity"
       "opnsense-ftp"
-      "kdev_bigtwin"
       "hetz-arm"
       "id_ed25519"
       "hetz-amd-initrd"
@@ -153,7 +153,7 @@
     enable = true;
     userEmail = "p.raghav@samsung.com";
     userName = "Pankaj Raghav";
-    package = pkgs.gitAndTools.gitFull;
+    package = pkgs.gitFull;
     aliases = {
       s = "status";
     };
@@ -226,12 +226,6 @@
         hostname = "192.168.8.1";
         user = "ftp";
         identityFile = "/home/panky/.ssh/opnsense-ftp";
-      };
-      "bigtwin" = {
-        hostname = "149.97.161.244";
-        user = "panky";
-        identityFile = "/home/panky/.ssh/kdev_bigtwin";
-        port = 9004;
       };
       "hetz-arm" = {
         hostname = "65.21.243.112";
