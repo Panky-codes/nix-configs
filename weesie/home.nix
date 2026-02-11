@@ -40,10 +40,6 @@
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
-    agents = [
-      "gpg"
-      "ssh"
-    ];
     keys = [
       "github"
       "hetz-amd-panky"
@@ -129,21 +125,21 @@
     '';
   };
 
+  programs.delta = {
+    enable = true;
+    options = {
+      side-by-side = "true";
+    };
+  };
   programs.git = {
     enable = true;
-    userEmail = "p.raghav@samsung.com";
-    userName = "Pankaj Raghav";
     package = pkgs.gitFull;
-    aliases = {
-      s = "status";
-    };
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = "true";
+    settings = {
+      user.email = "p.raghav@samsung.com";
+      user.name = "Pankaj Raghav";
+      alias = {
+        s = "status";
       };
-    };
-    extraConfig = {
       rerere = {
         enable = "true";
       };
@@ -179,24 +175,28 @@
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "confirm";
-    forwardAgent = true;
+    enableDefaultConfig = false;
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";
         identityFile = "/home/panky/.ssh/github";
+        addKeysToAgent = "confirm";
       };
       "vmctl" = {
         hostname = "localhost";
         user = "root";
         identityFile = "/home/panky/.ssh/vmctl";
         port = 2222;
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "hetz-amd-panky" = {
         hostname = "135.181.231.96";
         user = "panky";
         identityFile = "/home/panky/.ssh/hetz-amd-panky";
 	port = 718;
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "*" = {
 	identitiesOnly = true;
