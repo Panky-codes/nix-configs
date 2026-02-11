@@ -141,6 +141,33 @@
   services.openssh.enable = true;
   services.tailscale.enable = true;
 
+  networking.useNetworkd = true;
+
+#  systemd.network.wait-online.ignoredInterfaces = [ "tap0" "tailscale0"];
+  systemd.network.wait-online.enable = false;
+  systemd.network = {
+    netdevs = {
+      "10-tap0" = {
+        netdevConfig = {
+          Kind = "tap";
+          Name = "tap0";
+        };
+        # The [Tun] section is valid for both Tun and Tap devices in systemd
+        tunConfig = {
+          User = "panky"; # Replace with your actual username
+          Group = "users";
+        };
+      };
+    };
+    networks = {
+      "10-tap0" = {
+        matchConfig.Name = "tap0";
+	linkConfig.RequiredForOnline = "no";
+        networkConfig.LinkLocalAddressing = "no";
+      };
+    };
+  };
+
   # Open ports in the firewall.
   # 2049 for NFS
   networking.firewall.allowedTCPPorts = [
