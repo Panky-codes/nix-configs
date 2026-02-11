@@ -177,8 +177,8 @@
         fixes = "Fixes: %h (\"%s\")";
         changelog = "commit %h (\"%s\")";
       };
-      sendemail."mailbox" = {
-        envelopeSender = "Pankaj Raghav (Samsung) <kernel@pankajraghav.com>";
+      sendemail."migadu" = {
+        envelopeSender = "Pankaj Raghav (Samsung) <pankaj.raghav@linux.dev>";
       };
 
     };
@@ -285,7 +285,6 @@
         };
       };
       realName = "Pankaj Raghav (Samsung)";
-      primary = true;
       smtp = {
         host = "smtp.mailbox.org";
         tls.useStartTls = true;
@@ -294,6 +293,25 @@
       };
       userName = "me@pankajraghav.com";
       passwordCommand = "pass mailbox/mail";
+    };
+
+    accounts.migadu = {
+      address = "pankaj.raghav@linux.dev";
+      msmtp = {
+        enable = true;
+        extraConfig = {
+          auth = "plain";
+        };
+      };
+      realName = "Pankaj Raghav (Samsung)";
+      primary = true;
+      smtp = {
+        host = "smtp.migadu.com";
+        tls.enable = true;
+        port = 465;
+      };
+      userName = "pankaj.raghav@linux.dev";
+      passwordCommand = "pass migadu/mail";
     };
   };
 
