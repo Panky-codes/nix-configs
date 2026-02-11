@@ -53,10 +53,6 @@
   programs.keychain = {
     enable = true;
     enableZshIntegration = true;
-    agents = [
-      "gpg"
-      "ssh"
-    ];
     keys = [
       "github"
       "blixen"
@@ -151,19 +147,13 @@
 
   programs.git = {
     enable = true;
-    userEmail = "p.raghav@samsung.com";
-    userName = "Pankaj Raghav";
     package = pkgs.gitFull;
-    aliases = {
-      s = "status";
-    };
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = "true";
+    settings = {
+      user.email = "p.raghav@samsung.com";
+      user.name = "Pankaj Raghav";
+      alias = {
+        s = "status";
       };
-    };
-    extraConfig = {
       rerere = {
         enable = "true";
       };
@@ -177,10 +167,18 @@
         fixes = "Fixes: %h (\"%s\")";
         changelog = "commit %h (\"%s\")";
       };
+
       sendemail."migadu" = {
         envelopeSender = "Pankaj Raghav (Samsung) <pankaj.raghav@linux.dev>";
       };
 
+    };
+  };
+
+  programs.delta = {
+    enable = true;
+    options = {
+      side-by-side = "true";
     };
   };
 
@@ -199,65 +197,78 @@
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "confirm";
-    forwardAgent = true;
+    enableDefaultConfig = false;
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";
         identityFile = "/home/panky/.ssh/github";
-      };
-      "blixen" = {
-        hostname = "10.20.40.150";
-        user = "panky";
-        identityFile = "/home/panky/.ssh/blixen";
+        addKeysToAgent = "confirm";
       };
       "vmctl" = {
         hostname = "localhost";
         user = "root";
         identityFile = "/home/panky/.ssh/vmctl";
         port = 2222;
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "trinity" = {
         hostname = "trinity.home.pankajraghav.com";
         user = "panky";
         identityFile = "/home/panky/.ssh/trinity-nix";
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "sftp" = {
         hostname = "192.168.8.1";
         user = "ftp";
         identityFile = "/home/panky/.ssh/opnsense-ftp";
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "hetz-arm" = {
         hostname = "65.21.243.112";
         user = "panky";
         identityFile = "/home/panky/.ssh/hetz-arm";
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "hetz-amd-initrd" = {
         hostname = "135.181.231.96";
         user = "root";
         identityFile = "/home/panky/.ssh/hetz-amd-initrd";
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "hetz-amd-panky" = {
         hostname = "135.181.231.96";
         user = "panky";
         identityFile = "/home/panky/.ssh/hetz-amd-panky";
 	port = 718;
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "nix-vm" = {
         hostname = "192.168.122.94";
         user = "root";
         identityFile = "/home/panky/.ssh/id_ed25519";
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "bt04" = {
         hostname = "bgt140507bm04.dtc.local";
         user = "panky";
         identityFile = "/home/panky/.ssh/kdev_bigtwin";
         proxyJump = "bigtwin";
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "resticindia" = {
         hostname = "resticindia.home.pankajraghav.com";
         user = "panky";
         identityFile = "/home/panky/.ssh/restserver";
+        addKeysToAgent = "confirm";
+        forwardAgent = true;
       };
       "*" = {
 	identitiesOnly = true;
