@@ -4,7 +4,7 @@
     enable = true;
     userEmail = "dev@pankajraghav.com";
     userName = "Pankaj Raghav";
-    package = pkgs.gitAndTools.gitFull;
+    package = pkgs.gitFull;
     aliases = {
       s = "status";
     };
