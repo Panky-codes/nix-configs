@@ -22,9 +22,14 @@
     notmuch
     neomutt
     just
+    htop
     pinentry-curses
+    discord
     gemini-cli
   ];
+#  programs.neovim.plugins = [
+ #  pkgs.vimPlugins.nvim-treesitter
+  #];
   programs.gpg.enable = true;
   services.gpg-agent = {
     enable = true;
