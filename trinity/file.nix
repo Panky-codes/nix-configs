@@ -1,5 +1,14 @@
 {
   systemd.tmpfiles.settings = {
+    "docker" = {
+      "/home/panky/docker-data" = {
+        d = {
+          group = "users";
+          mode = "0755";
+          user = "panky";
+        };
+      };
+    };
     "tank" = {
       "/mnt/tank/firefly/upload" = {
         d = {

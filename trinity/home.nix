@@ -66,7 +66,7 @@
 backends:
   rest_local:
     type: sftp
-    path: opnsftp:/home/ftp/trinity-nix
+    path: opnsftp:/home/ftp/trinity
     env:
       RESTIC_PASSWORD_FILE: /run/agenix/restic_dk
 

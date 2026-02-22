@@ -41,6 +41,11 @@
 #    [ { device = "/dev/disk/by-uuid/7ec8a374-e5ef-4886-8341-e04b47770299"; }
 #    ];
 #
+  zramSwap = {
+     enable = true;
+     writebackDevice = "/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_E0D55E6A0DED184069460046-0:0-part1";
+  };
+
   fileSystems = {
     "/mnt/tank" = {
       device = "/dev/disk/by-uuid/8f23bb50-4e3f-47e8-bef7-94aa12937634";

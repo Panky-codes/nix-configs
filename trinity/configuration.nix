@@ -30,6 +30,7 @@
 
   virtualisation.docker = {
     enable = true;
+    daemon.settings.data-root = "/home/panky/docker-data";
   };
 
   users.users.panky = {
@@ -81,6 +82,7 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/p
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/scrutiny/docker-compose.yaml stop
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/syncthing/docker-compose.yaml stop
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/immich/docker-compose.yaml stop
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/hoarder/docker-compose.yaml stop
 
 # Sometimes tc log is creating issues.
 # anyway it is not useful https://stackoverflow.com/questions/50158273/mysql-tc-log-file
@@ -98,6 +100,7 @@ ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/p
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/scrutiny/docker-compose.yaml start
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/syncthing/docker-compose.yaml start
 ${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/immich/docker-compose.yaml start
+${pkgs.docker-compose}/bin/docker-compose -f /home/panky/homeserver-automation/hoarder/docker-compose.yaml start
   '';
   serviceConfig = {
     Type = "oneshot";
