@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, unstable, ... }:
 {
   home.packages = with pkgs; [
     mosh
@@ -15,7 +15,7 @@
     modprobed-db
     duf
     tldr
-    enpass
+    unstable.enpass
     discord
     obsidian
     restic

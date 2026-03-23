@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     agenix.url = "github:ryantm/agenix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -20,6 +21,7 @@
       agenix,
       nixos-hardware,
       nixos-wsl,
+      nixpkgs-unstable,
       ...
     }:
     {
@@ -74,6 +76,12 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                unstable = import nixpkgs-unstable {
+                  system = "x86_64-linux";
+                  config.allowUnfree = true;
+                };
+              };
 
               home-manager.users.panky = import ./quentin/home.nix;
             }
