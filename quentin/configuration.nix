@@ -59,10 +59,14 @@
   powerManagement.powertop.enable = true;
 
   # syncthing
+  systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
   services = {
     syncthing = {
       enable = true;
+      overrideFolders = false;
+      overrideDevices = false;
       user = "panky";
+      group = "users";
       dataDir = "/home/panky/Documents/syncthing"; # Default folder for new synced folders
       configDir = "/home/panky/Documents/syncthing/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
